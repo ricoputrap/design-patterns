@@ -5,7 +5,10 @@ class Logger {
 
   public static getInstance(): Logger {
     if (!Logger.instance) {
+      console.log("Creating Logger instance...");
       Logger.instance = new Logger();
+      console.log("Logger instance created.");
+      console.log("------------------------");
     }
     return Logger.instance;
   }

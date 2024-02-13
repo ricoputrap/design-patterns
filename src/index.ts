@@ -6,17 +6,30 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-rl.question("Type something: ", answer => {
-  switch (answer) {
-    case "singleton":
-      runSingleton();
-      break;
+const run = () => {
+  rl.question("Type here: ", answer => {
+    switch (answer) {
+      case "singleton":
+        runSingleton();
+        break;
 
-    default:
-      break;
-  }
+      case "exit":
+        rl.close();
+        console.log("Thank you for trying this design patterns project!");
+        return;
+  
+      default:
+        break;
+    }
 
-  rl.close();
-})
+    console.log("===============")
+    console.log("Try again...")
+    run();
+  })
+}
 
-// runSingleton();
+let introText = "Welcome to the design patterns project!";
+introText += "\nPlease type the name of the pattern you would like to run.";
+
+
+run();
