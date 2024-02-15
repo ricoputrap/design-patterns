@@ -1,5 +1,6 @@
+import rl from "./rl";
 import { run as runSingleton } from "./singleton";
-import * as readline from "node:readline";
+import { run as runBuilder } from "./builder";
 
 enum EnumPattern {
   SINGLETON = "1",
@@ -7,17 +8,17 @@ enum EnumPattern {
   EXIT = "3"
 }
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
 const run = () => {
   rl.question("Type here: ", answer => {
     switch (answer) {
       case EnumPattern.SINGLETON:
         runSingleton();
         break;
+
+      case EnumPattern.BUILDER:
+        console.log("Loading...\n");
+        runBuilder();
+        return;
 
       case EnumPattern.EXIT:
         rl.close();
@@ -44,6 +45,5 @@ const introText = `
 `;
 
 console.log(introText);
-
 
 run();
