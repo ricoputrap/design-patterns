@@ -20,6 +20,7 @@ export default class MealView {
   }
 
   public static completeOrder(meals: Meal[]) {
+    console.log("\n===========================\n")
     console.log("\nOption 3: Complete Order\n");
     console.log(`Here are ${meals.length} meal(s) you've ordered:\n`);
 

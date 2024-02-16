@@ -11,28 +11,12 @@ export default class Meal {
     this.dessert = dessert;
   }
 
-  public getMainCourse(): string {
-    return this.mainCourse;
-  }
-
-  public getSideDishes(): string[] {
-    return this.sideDishes;
-  }
-
-  public getDrink(): string {
-    return this.drink;
-  }
-
-  public getDessert(): string {
-    return this.dessert;
-  }
-
   public toString(): string {
     return `
-    Main course: ${this.mainCourse}
-    Side dishes: ${this.sideDishes.join(", ")}
-    Drink: ${this.drink}
-    Dessert: ${this.dessert}
+    Main course: ${this.mainCourse || "-"}
+    Side dishes: ${this.sideDishes.join(", ")  || "-"}
+    Drink: ${this.drink  || "-"}
+    Dessert: ${this.dessert  || "-"}
     `;
   }
 }

@@ -3,7 +3,7 @@ import Meal from "./Meal";
 import MealBuilder from "./MealBuilder";
 import MealModel from "./MealModel";
 import MealView from "./MealView";
-import { EnumMenuOptions, MAIN_COURSES, SIDE_DISHES } from "./constants";
+import { DESSERTS, DRINKS, EnumMenuOptions, MAIN_COURSES, SIDE_DISHES } from "./constants";
 
 export default class MealController {
   private mealModel: MealModel;
@@ -73,11 +73,24 @@ export default class MealController {
     }
     await this.promptSideDishes(builder);
 
+    // Drink
+    console.log("\nDrink:");
+    for (let i = 0; i < DRINKS.length; i++) {
+      console.log(`${i + 1}. ${DRINKS[i]}`);
+    }
+    await this.promptDrink(builder);
+
+    // Dessert
+    console.log("\nDessert:");
+    for (let i = 0; i < DESSERTS.length; i++) {
+      console.log(`${i + 1}. ${DESSERTS[i]}`);
+    }
+    await this.promptDessert(builder);
+
     const meal: Meal = builder.build();
     this.mealModel.addMeal(meal);
 
     this.mainMenu();
-
   }
 
   private promptMainCourse(builder: MealBuilder): Promise<void> {
@@ -119,5 +132,47 @@ export default class MealController {
         resolve();
       });
     })
+  }
+
+  private promptDrink(builder: MealBuilder): Promise<void> {
+    return new Promise<void>((resolve) => {
+      rl.question("\nEnter your choice of drink: ", (answer) => {
+        if (answer === "") {
+          resolve();
+          return;
+        }
+    
+        if (!DRINKS.includes(answer)) {
+          console.log("Doesn't exist! Please select from the list.\n");
+          this.promptDrink(builder);
+        }
+        else {
+          builder.setDrink(answer);
+          resolve();
+          return;
+        }
+      });
+    });
+  }
+
+  private promptDessert(builder: MealBuilder): Promise<void> {
+    return new Promise<void>((resolve) => {
+      rl.question("\nEnter your choice of dessert: ", (answer) => {
+        if (answer === "") {
+          resolve();
+          return;
+        }
+    
+        if (!DESSERTS.includes(answer)) {
+          console.log("Doesn't exist! Please select from the list.\n");
+          this.promptDessert(builder);
+        }
+        else {
+          builder.setDessert(answer);
+          resolve();
+          return;
+        }
+      });
+    });
   }
 }
