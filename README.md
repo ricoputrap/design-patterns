@@ -2,4 +2,4 @@
 
 ## Builder Pattern - Customizable Meal Builder
 
-![Builder Pattern](demo/1-builder-pattern.mp4)
+![Builder Pattern](/demo/1-builder-pattern.mp4)
