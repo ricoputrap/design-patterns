@@ -1,11 +1,13 @@
 import rl from "./rl";
 import { run as runSingleton } from "./singleton";
 import { run as runBuilder } from "./builder";
+import { run as runFactoryMethod } from "./factory-method";
 
 enum EnumPattern {
   SINGLETON = "1",
   BUILDER = "2",
-  EXIT = "3"
+  FACTORY_METHOD = "3",
+  EXIT = "4"
 }
 
 const run = () => {
@@ -18,6 +20,11 @@ const run = () => {
       case EnumPattern.BUILDER:
         console.log("Loading...\n");
         runBuilder();
+        return;
+
+      case EnumPattern.FACTORY_METHOD:
+        console.log("Loading...\n");
+        runFactoryMethod();
         return;
 
       case EnumPattern.EXIT:
@@ -41,7 +48,8 @@ const introText = `
   Please type the pattern you would like to run. You may select the number.
   1. Singleton
   2. Builder
-  3. Exit
+  3. Factory Method
+  4. Exit
 `;
 
 console.log(introText);

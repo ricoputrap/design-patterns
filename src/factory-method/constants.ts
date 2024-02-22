@@ -1,0 +1,8 @@
+export enum EnumMenuOptions {
+  CREATE_EMPLOYEE = "1",
+  VIEW_EMPLOYEES = "2",
+  EDIT_EMPLOYEE = "3",
+  DELETE_EMPLOYEE = "4",
+  CALCULATE_PAYROLL = "5",
+  GENERATE_REPORTS = "6"
+}
